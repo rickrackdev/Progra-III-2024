@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Total extends AppCompatActivity {
     Button btnBack;
+    ImageButton btnInfo;
     TextView txtProduct, txtQty, txtPrice, txtCesc, txtIva, txtSub, txtTotal;
 
     @Override
@@ -18,6 +21,7 @@ public class Total extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.total);
         btnBack = findViewById(R.id.btnBack);
+        btnInfo = findViewById(R.id.btnInfo);
         txtProduct = findViewById(R.id.txtProduct);
         txtQty = findViewById(R.id.txtQty);
         txtPrice = findViewById(R.id.txtPrice);
@@ -56,12 +60,29 @@ public class Total extends AppCompatActivity {
 
 
 
+    btnInfo.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            infoActivity();
+        }
+    });
+
+
+
     btnBack.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             finish();
         }
     });
+
+
     }
+    private void infoActivity(){
+        Intent infoActivity = new Intent(Total.this, About.class);
+        startActivity(infoActivity);
+    }
+
+
 
 }
