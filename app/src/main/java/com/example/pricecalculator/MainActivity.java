@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-
     private void openActivity(){
         String getProduct = edTxtPdtName.getText().toString();
         String getQuantity = edTxtQuantity.getText().toString();
@@ -55,10 +53,4 @@ public class MainActivity extends AppCompatActivity {
             startActivity(openActivity);
         }
     }
-
-
-
-
-
-
 }
