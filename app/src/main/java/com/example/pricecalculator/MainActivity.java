@@ -2,9 +2,11 @@ package com.example.pricecalculator;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,16 +38,25 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void openActivity(){
         String getProduct = edTxtPdtName.getText().toString();
         String getQuantity = edTxtQuantity.getText().toString();
         String getPrice = edTxtPrice.getText().toString();
-        Intent openActivity = new Intent(MainActivity.this, Total.class);
-        openActivity.putExtra("product", getProduct);
-        openActivity.putExtra("quantity", getQuantity);
-        openActivity.putExtra("price", getPrice);
-        startActivity(openActivity);
+
+        if (TextUtils.isEmpty(getProduct) || (TextUtils.isEmpty(getQuantity)) || (TextUtils.isEmpty(getPrice))){
+            Toast.makeText(MainActivity.this, "Empty fields are not allowed!", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent openActivity = new Intent(MainActivity.this, Total.class);
+            openActivity.putExtra("product", getProduct);
+            openActivity.putExtra("quantity", getQuantity);
+            openActivity.putExtra("price", getPrice);
+            startActivity(openActivity);
+        }
     }
+
+
 
 
 
